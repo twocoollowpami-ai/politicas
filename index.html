@@ -3,177 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EM SOFTWARE - TalachApp Resources</title>
+    <title>Redirigiendo a EM SOFTWARE...</title>
+    
+    <!-- REDIRECCIÓN INMEDIATA A PAGINA.HTML -->
+    <meta http-equiv="refresh" content="0; url=pagina.html">
+    
+    <!-- También con JavaScript por seguridad -->
+    <script>
+        window.location.href = "pagina.html";
+    </script>
+    
+    <!-- Para crawlers de Google/AdMob -->
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://twocoollowpami-ai.github.io/politicas/pagina.html" />
+    
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-        }
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .logo {
-            width: 100px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: #003366;
-            margin-bottom: 10px;
-        }
-        .app-name {
-            color: #8E0404;
-            font-size: 1.8em;
-            margin: 20px 0;
-        }
-        .buttons {
+            background: linear-gradient(135deg, #003366, #00509E);
+            color: white;
+            height: 100vh;
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
-        .btn {
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            display: flex;
             align-items: center;
-            gap: 8px;
+            margin: 0;
+            text-align: center;
         }
-        .btn-primary {
-            background: #8E0404;
-            color: white;
-            border: 2px solid #8E0404;
+        .container {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
         }
-        .btn-secondary {
-            background: #003366;
-            color: white;
-            border: 2px solid #003366;
+        .loader {
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top: 5px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
         }
-        .btn-outline {
-            background: white;
-            color: #003366;
-            border: 2px solid #003366;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .section {
-            margin: 30px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            text-align: left;
-        }
-        .url-box {
-            background: #e9ecef;
-            padding: 12px;
+        .url-display {
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
             border-radius: 6px;
+            margin: 20px 0;
             font-family: 'Courier New', monospace;
-            margin: 10px 0;
+            font-size: 14px;
             word-break: break-all;
         }
-        .status {
-            display: inline-block;
-            padding: 5px 15px;
+        .app-ads-link {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: #8E0404;
+            color: white;
+            padding: 8px 15px;
             border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-left: 10px;
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.8;
         }
-        .status-active {
-            background: #d4edda;
-            color: #155724;
-        }
-        .footer {
-            margin-top: 40px;
-            color: #666;
-            font-size: 14px;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-        @media (max-width: 600px) {
-            .buttons {
-                flex-direction: column;
-            }
-            .btn {
-                justify-content: center;
-            }
+        .app-ads-link:hover {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://i.ibb.co/G4S54CF5/logo-2.png" alt="EM SOFTWARE Logo" class="logo">
+        <div class="loader"></div>
+        
         <h1>EM SOFTWARE PROFESSIONAL SOLUTIONS</h1>
+        <p>Redirigiendo a la página del desarrollador...</p>
         
-        <div class="app-name">🚗 TalachApp - Recursos de la Aplicación</div>
-        
-        <p>Portal de recursos y verificación para la aplicación TalachApp de asistencia vial.</p>
-        
-        <div class="buttons">
-            <a href="pagina.html" class="btn btn-primary">
-                📄 Página Principal
-            </a>
-            <a href="app-ads.txt" class="btn btn-secondary">
-                📊 app-ads.txt
-            </a>
-            <a href="#info" class="btn btn-outline">
-                ℹ️ Información
-            </a>
-        </div>
-        
-        <div class="section" id="info">
-            <h2>📁 Archivos Disponibles</h2>
-            
-            <h3>✅ app-ads.txt <span class="status status-active">ACTIVO</span></h3>
-            <p>Archivo de verificación para monetización con Google AdMob</p>
-            <div class="url-box">
-                https://twocoollowpami-ai.github.io/politicas/app-ads.txt
-            </div>
-            <a href="app-ads.txt" style="color: #8E0404; text-decoration: none;">
-                🔗 Ver archivo directamente →
-            </a>
-            
-            <h3 style="margin-top: 25px;">📄 Página de Políticas</h3>
-            <p>Información completa del desarrollador y políticas</p>
-            <div class="url-box">
+        <div class="url-destino">
+            <strong>Destino:</strong>
+            <div class="url-display">
                 https://twocoollowpami-ai.github.io/politicas/pagina.html
             </div>
-            <a href="pagina.html" style="color: #003366; text-decoration: none;">
-                🔗 Ir a la página →
-            </a>
         </div>
         
-        <div class="section">
-            <h2>🔍 Verificación app-ads.txt</h2>
-            <p><strong>Publisher ID:</strong> <code>pub-7402097188412046</code></p>
-            <p><strong>Estado:</strong> Configurado correctamente ✓</p>
-            <p><strong>Última verificación:</strong> {fecha actual}</p>
+        <p>Si no redirige automáticamente, haz clic en:</p>
+        <a href="pagina.html" style="color: white; text-decoration: underline; font-weight: bold;">
+            Ir a la página del desarrollador →
+        </a>
+        
+        <!-- Información para crawlers -->
+        <div style="margin-top: 30px; font-size: 12px; opacity: 0.7;">
+            <p>📄 <strong>app-ads.txt disponible en:</strong><br>
+            <code>https://twocoollowpami-ai.github.io/politicas/app-ads.txt</code></p>
             
-            <div style="margin-top: 20px; padding: 15px; background: #e8f4fd; border-radius: 8px;">
-                <p style="margin: 0;">📌 <strong>Para AdMob:</strong> Esta URL está configurada en tu dashboard de AdMob.</p>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>© 2024 EM SOFTWARE PROFESSIONAL SOLUTIONS</p>
-            <p style="font-size: 12px; margin-top: 10px;">
-                Este sitio sirve como portal de recursos para la aplicación TalachApp.
-                Los crawlers de Google AdMob pueden acceder directamente a los archivos de verificación.
-            </p>
+            <p>👤 <strong>Publisher ID:</strong> pub-7402097188412046</p>
         </div>
     </div>
+    
+    <!-- Enlace directo a app-ads.txt (visible pero discreto) -->
+    <a href="app-ads.txt" class="app-ads-link" title="Directo a app-ads.txt">
+        app-ads.txt ↗
+    </a>
 </body>
 </html>
