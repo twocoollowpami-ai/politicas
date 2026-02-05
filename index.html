@@ -1,24 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>app-ads.txt - Intelitest</title>
-    <!-- Redirige después de 3 segundos a app-ads.txt -->
-    <meta http-equiv="refresh" content="3; url=app-ads.txt">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EM SOFTWARE - TalachApp Resources</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 40px; text-align: center; }
-        .loader { border: 5px solid #f3f3f3; border-top: 5px solid #8E0404; border-radius: 50%; width: 50px; height: 50px; animation: spin 2s linear infinite; margin: 20px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #003366;
+            margin-bottom: 10px;
+        }
+        .app-name {
+            color: #8E0404;
+            font-size: 1.8em;
+            margin: 20px 0;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: #8E0404;
+            color: white;
+            border: 2px solid #8E0404;
+        }
+        .btn-secondary {
+            background: #003366;
+            color: white;
+            border: 2px solid #003366;
+        }
+        .btn-outline {
+            background: white;
+            color: #003366;
+            border: 2px solid #003366;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .url-box {
+            background: #e9ecef;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+        .footer {
+            margin-top: 40px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        @media (max-width: 600px) {
+            .buttons {
+                flex-direction: column;
+            }
+            .btn {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="loader"></div>
-    <h2>Redirigiendo a app-ads.txt</h2>
-    <p>Archivo de verificación de anuncios para TalachApp</p>
-    <p>Si no redirige automáticamente, haz clic <a href="app-ads.txt">aquí</a>.</p>
-    
-    <div style="margin-top: 30px; font-size: 12px; color: #666;">
-        <p>URL: https://twocoollowpami-ai.github.io/politicas/app-ads.txt</p>
-        <p>Publisher ID: pub-7402097188412046</p>
+    <div class="container">
+        <img src="https://i.ibb.co/G4S54CF5/logo-2.png" alt="EM SOFTWARE Logo" class="logo">
+        <h1>EM SOFTWARE PROFESSIONAL SOLUTIONS</h1>
+        
+        <div class="app-name">🚗 TalachApp - Recursos de la Aplicación</div>
+        
+        <p>Portal de recursos y verificación para la aplicación TalachApp de asistencia vial.</p>
+        
+        <div class="buttons">
+            <a href="pagina.html" class="btn btn-primary">
+                📄 Página Principal
+            </a>
+            <a href="app-ads.txt" class="btn btn-secondary">
+                📊 app-ads.txt
+            </a>
+            <a href="#info" class="btn btn-outline">
+                ℹ️ Información
+            </a>
+        </div>
+        
+        <div class="section" id="info">
+            <h2>📁 Archivos Disponibles</h2>
+            
+            <h3>✅ app-ads.txt <span class="status status-active">ACTIVO</span></h3>
+            <p>Archivo de verificación para monetización con Google AdMob</p>
+            <div class="url-box">
+                https://twocoollowpami-ai.github.io/politicas/app-ads.txt
+            </div>
+            <a href="app-ads.txt" style="color: #8E0404; text-decoration: none;">
+                🔗 Ver archivo directamente →
+            </a>
+            
+            <h3 style="margin-top: 25px;">📄 Página de Políticas</h3>
+            <p>Información completa del desarrollador y políticas</p>
+            <div class="url-box">
+                https://twocoollowpami-ai.github.io/politicas/pagina.html
+            </div>
+            <a href="pagina.html" style="color: #003366; text-decoration: none;">
+                🔗 Ir a la página →
+            </a>
+        </div>
+        
+        <div class="section">
+            <h2>🔍 Verificación app-ads.txt</h2>
+            <p><strong>Publisher ID:</strong> <code>pub-7402097188412046</code></p>
+            <p><strong>Estado:</strong> Configurado correctamente ✓</p>
+            <p><strong>Última verificación:</strong> {fecha actual}</p>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #e8f4fd; border-radius: 8px;">
+                <p style="margin: 0;">📌 <strong>Para AdMob:</strong> Esta URL está configurada en tu dashboard de AdMob.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 EM SOFTWARE PROFESSIONAL SOLUTIONS</p>
+            <p style="font-size: 12px; margin-top: 10px;">
+                Este sitio sirve como portal de recursos para la aplicación TalachApp.
+                Los crawlers de Google AdMob pueden acceder directamente a los archivos de verificación.
+            </p>
+        </div>
     </div>
 </body>
 </html>
