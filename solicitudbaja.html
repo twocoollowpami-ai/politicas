@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vialcheck - Solicitud de Baja de Cuenta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .warning-banner {
+            background: #fff3cd;
+            color: #856404;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 3px solid #ffeeba;
+        }
+
+        .warning-banner .icon {
+            font-size: 32px;
+            background: #ffeeba;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .warning-banner .text {
+            flex: 1;
+        }
+
+        .warning-banner h3 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .info-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid #dc3545;
+        }
+
+        .info-section h2 {
+            color: #dc3545;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .info-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+        }
+
+        .info-item .emoji {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .info-item h4 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-item p {
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .data-table th {
+            background: #343a40;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table .yes {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .data-table .no {
+            color: #dc3545;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #495057;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .form-group label.required::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        select.form-control {
+            background: white;
+            cursor: pointer;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 10px 0;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-group {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            flex: 1;
+            color: #495057;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .confirmation-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .confirmation-box p {
+            margin-bottom: 10px;
+            color: #0b5e8c;
+        }
+
+        .confirmation-box strong {
+            color: #0a3144;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.6);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alert {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95em;
+        }
+
+        .footer-note a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .progress-steps {
+            display: flex;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: #e9ecef;
+            z-index: 1;
+        }
+
+        .step.active .step-circle {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .step.completed .step-circle {
+            background: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            background: white;
+        }
+
+        .step-label {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .step.active .step-label {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .warning-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>⚠️ Solicitud de Baja de Cuenta</h1>
+                <p class="subtitle">Vialcheck - Sistema de Gestión de Rutas y Flotillas</p>
+            </div>
+
+            <div class="warning-banner">
+                <div class="icon">⚠️</div>
+                <div class="text">
+                    <h3>Esta acción es irreversible</h3>
+                    <p>Al solicitar la baja de tu cuenta, todos tus datos serán eliminados permanentemente de nuestros sistemas. Esta acción no se puede deshacer.</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- Progress Steps -->
+                <div class="progress-steps">
+                    <div class="step active">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Verificación</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Confirmación</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Procesamiento</div>
+                    </div>
+                </div>
+
+                <!-- Información importante -->
+                <div class="info-section">
+                    <h2>📋 Datos que se eliminarán permanentemente</h2>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="emoji">📍</span>
+                            <h4>Historial de viajes</h4>
+                            <p>Todas las rutas realizadas, puntos de control y tiempos de viaje</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="emoji">👤</span>
+                            <h4>Datos personales</h4>
+                            <p>Nombre, correo, teléfono, foto de perfil y credenciales</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="emoji">📊</span>
+                            <h4>Estadísticas</h4>
+                            <p>Rendimiento, excesos de velocidad, puntualidad y reportes</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="emoji">🚛</span>
+                            <h4>Asignaciones</h4>
+                            <p>Vehículos asignados, rutas programadas y preferencias</p>
+                        </div>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Dato</th>
+                                <th>Se elimina</th>
+                                <th>Periodo de retención legal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Datos de ubicación en tiempo real</td>
+                                <td class="yes">✅ Sí</td>
+                                <td>Inmediato</td>
+                            </tr>
+                            <tr>
+                                <td>Historial de viajes (últimos 30 días)</td>
+                                <td class="yes">✅ Sí</td>
+                                <td>Inmediato</td>
+                            </tr>
+                            <tr>
+                                <td>Historial de viajes (mayor a 30 días)</td>
+                                <td class="yes">✅ Sí</td>
+                                <td>Inmediato</td>
+                            </tr>
+                            <tr>
+                                <td>Reportes generados para clientes</td>
+                                <td class="no">❌ No*</td>
+                                <td>2 años (requerido por ley)</td>
+                            </tr>
+                            <tr>
+                                <td>Registros de facturación</td>
+                                <td class="no">❌ No*</td>
+                                <td>5 años (requerido por ley)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 0.9em; color: #6c757d; margin-top: 10px;">* Estos datos se conservan anonimizados por requisitos legales y fiscales, sin asociación a tu identidad.</p>
+                </div>
+
+                <!-- Formulario de solicitud -->
+                <form id="bajaForm" onsubmit="return false;">
+                    <!-- Tipo de cuenta -->
+                    <div class="form-group">
+                        <label class="required">Tipo de cuenta a dar de baja</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="tipoCuenta" value="conductor" checked> 
+                                <span>🚗 Conductor / Chofer</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="tipoCuenta" value="admin"> 
+                                <span>🏢 Administrador de flota</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="tipoCuenta" value="cliente"> 
+                                <span>📋 Cliente / Empresa</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Datos de identificación -->
+                    <div class="form-group">
+                        <label for="nombre" class="required">Nombre completo</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Ej: Juan Pérez González" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="required">Correo electrónico asociado</label>
+                        <input type="email" class="form-control" id="email" placeholder="Ej: juan.perez@empresa.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono" class="required">Teléfono de contacto</label>
+                        <input type="tel" class="form-control" id="telefono" placeholder="Ej: +52 55 1234 5678" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="identificacion" class="required">Número de identificación (ID de usuario)</label>
+                        <input type="text" class="form-control" id="identificacion" placeholder="Lo encuentras en Configuración > Mi cuenta" required>
+                    </div>
+
+                    <!-- Motivo de baja -->
+                    <div class="form-group">
+                        <label for="motivo" class="required">Motivo de la baja</label>
+                        <select class="form-control" id="motivo" required>
+                            <option value="">Selecciona un motivo...</option>
+                            <option value="cambio_empleo">Cambio de empleo / empresa</option>
+                            <option value="jubilacion">Jubilación</option>
+                            <option value="insatisfaccion">Insatisfacción con el servicio</option>
+                            <option value="problemas_tecnicos">Problemas técnicos frecuentes</option>
+                            <option value="costo">Costo del servicio</option>
+                            <option value="duplicada">Cuenta duplicada</option>
+                            <option value="privacidad">Preocupaciones de privacidad</option>
+                            <option value="otro">Otro (especificar)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="detalle">Detalle adicional (opcional)</label>
+                        <textarea class="form-control" id="detalle" placeholder="Cuéntanos más detalles sobre tu decisión... Esto nos ayuda a mejorar"></textarea>
+                    </div>
+
+                    <!-- Checkboxes de confirmación -->
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="check1">
+                            <label for="check1"><strong>He realizado una copia de seguridad</strong> de mi información personal, reportes y datos importantes antes de solicitar la baja.</label>
+                        </div>
+                        
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="check2">
+                            <label for="check2"><strong>Entiendo que perderé acceso</strong> a la aplicación, historial de viajes y estadísticas de rendimiento.</label>
+                        </div>
+                        
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="check3">
+                            <label for="check3"><strong>Confirmo que no tengo viajes activos</strong> ni rutas pendientes de finalizar.</label>
+                        </div>
+                        
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="check4">
+                            <label for="check4"><strong>Acepto que algunos datos se conservarán anonimizados</strong> por requisitos legales y fiscales durante el tiempo establecido por la ley.</label>
+                        </div>
+                        
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="check5">
+                            <label for="check5"><strong>He leído y acepto</strong> las condiciones de baja de cuenta y la política de privacidad de Vialcheck.</label>
+                        </div>
+                    </div>
+
+                    <!-- Confirmación final -->
+                    <div class="confirmation-box">
+                        <p>🔐 <strong>Verificación de identidad:</strong></p>
+                        <p>Para confirmar que eres el titular de la cuenta, por favor escribe la siguiente frase exactamente como se muestra:</p>
+                        <p style="font-family: monospace; font-size: 1.2em; background: white; padding: 10px; border-radius: 5px; margin: 10px 0;">CONFIRMO_BAJA_VIALCHECK_2026</p>
+                        <input type="text" class="form-control" placeholder="Escribe la frase de confirmación" id="confirmacion" required>
+                    </div>
+
+                    <!-- Acciones -->
+                    <div class="actions">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='https://vialcheck.com/soporte'">
+                            ❌ Cancelar y volver
+                        </button>
+                        <button type="button" class="btn btn-danger" id="btnSolicitarBaja" onclick="solicitarBaja()" disabled>
+                            ⚠️ Solicitar baja definitiva
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Información adicional -->
+                <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                    <h4 style="margin-bottom: 15px; color: #495057;">📌 Proceso de baja:</h4>
+                    <ol style="color: #6c757d; margin-left: 20px;">
+                        <li style="margin-bottom: 8px;">Completa y envía este formulario</li>
+                        <li style="margin-bottom: 8px;">Recibirás un correo de confirmación en las próximas 24 horas</li>
+                        <li style="margin-bottom: 8px;">Debes confirmar haciendo clic en el enlace del correo</li>
+                        <li style="margin-bottom: 8px;">Una vez confirmado, tu cuenta se desactivará inmediatamente</li>
+                        <li style="margin-bottom: 8px;">La eliminación permanente de datos tomará hasta 30 días</li>
+                        <li style="margin-bottom: 8px;">Recibirás un correo de confirmación cuando el proceso esté completo</li>
+                    </ol>
+                </div>
+
+                <!-- Tiempos de respuesta -->
+                <div style="margin-top: 20px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <span style="font-size: 24px;">⏱️</span>
+                        <p style="font-size: 0.9em; color: #6c757d;">Confirmación inicial<br><strong>24 horas</strong></p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="font-size: 24px;">🗑️</span>
+                        <p style="font-size: 0.9em; color: #6c757d;">Eliminación de datos<br><strong>30 días</strong></p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="font-size: 24px;">📧</span>
+                        <p style="font-size: 0.9em; color: #6c757d;">Confirmación final<br><strong>Correo automático</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>¿Cambiaste de opinión? <a href="https://vialcheck.com/soporte">Contacta a soporte</a> para resolver dudas antes de continuar.</p>
+            <p style="margin-top: 10px;">© 2026 Vialcheck - Protección de datos v2.0</p>
+        </div>
+    </div>
+
+    <script>
+        // Habilitar botón solo cuando todos los checkboxes estén marcados y la confirmación sea correcta
+        const checkboxes = document.querySelectorAll('#check1, #check2, #check3, #check4, #check5');
+        const confirmacionInput = document.getElementById('confirmacion');
+        const btnBaja = document.getElementById('btnSolicitarBaja');
+
+        function verificarFormulario() {
+            const todosCheckeados = Array.from(checkboxes).every(cb => cb.checked);
+            const confirmacionCorrecta = confirmacionInput?.value === 'CONFIRMO_BAJA_VIALCHECK_2026';
+            const emailValido = document.getElementById('email')?.value.includes('@');
+            const nombreCompleto = document.getElementById('nombre')?.value.length > 5;
+            const telefonoValido = document.getElementById('telefono')?.value.length >= 10;
+            const identificacionValida = document.getElementById('identificacion')?.value.length > 3;
+
+            if (todosCheckeados && confirmacionCorrecta && emailValido && nombreCompleto && telefonoValido && identificacionValida) {
+                btnBaja.disabled = false;
+            } else {
+                btnBaja.disabled = true;
+            }
+        }
+
+        // Agregar event listeners
+        checkboxes.forEach(cb => cb.addEventListener('change', verificarFormulario));
+        if (confirmacionInput) confirmacionInput.addEventListener('input', verificarFormulario);
+        document.getElementById('email')?.addEventListener('input', verificarFormulario);
+        document.getElementById('nombre')?.addEventListener('input', verificarFormulario);
+        document.getElementById('telefono')?.addEventListener('input', verificarFormulario);
+        document.getElementById('identificacion')?.addEventListener('input', verificarFormulario);
+
+        // Función para solicitar baja
+        function solicitarBaja() {
+            if (!btnBaja.disabled) {
+                const motivo = document.getElementById('motivo').value;
+                const detalle = document.getElementById('detalle').value;
+                const tipoCuenta = document.querySelector('input[name="tipoCuenta"]:checked').value;
+                
+                // Aquí normalmente enviarías los datos a tu backend
+                // Por ahora, simulamos el envío
+                
+                // Mostrar alerta de procesando
+                const alerta = document.createElement('div');
+                alerta.className = 'alert alert-warning';
+                alerta.innerHTML = `
+                    <span class="alert-icon">⏳</span>
+                    <div>
+                        <strong>Procesando solicitud...</strong><br>
+                        Por favor espera, estamos enviando tu solicitud.
+                    </div>
+                `;
+                document.querySelector('.content').insertBefore(alerta, document.querySelector('.actions'));
+                
+                // Simular envío
+                setTimeout(() => {
+                    alerta.className = 'alert alert-success';
+                    alerta.innerHTML = `
+                        <span class="alert-icon">✅</span>
+                        <div>
+                            <strong>¡Solicitud enviada con éxito!</strong><br>
+                            Hemos enviado un correo de confirmación a ${document.getElementById('email').value}. Por favor revisa tu bandeja de entrada y sigue las instrucciones.
+                        </div>
+                    `;
+                    
+                    // Deshabilitar formulario
+                    document.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+                    btnBaja.disabled = true;
+                    
+                    // Mostrar instrucciones adicionales
+                    const instrucciones = document.createElement('div');
+                    instrucciones.style.marginTop = '20px';
+                    instrucciones.style.padding = '20px';
+                    instrucciones.style.background = '#e7f3ff';
+                    instrucciones.style.borderRadius = '10px';
+                    instrucciones.innerHTML = `
+                        <h4 style="margin-bottom: 10px; color: #0b5e8c;">📧 Próximos pasos:</h4>
+                        <ol style="color: #0b5e8c; margin-left: 20px;">
+                            <li>Revisa tu correo electrónico</li>
+                            <li>Haz clic en el enlace de confirmación</li>
+                            <li>Tu cuenta será desactivada inmediatamente</li>
+                            <li>Recibirás confirmación cuando los datos sean eliminados</li>
+                        </ol>
+                        <p style="margin-top: 10px;"><strong>¿No recibiste el correo?</strong> Revisa spam o contacta a soporte@vialcheck.com</p>
+                    `;
+                    document.querySelector('.content').appendChild(instrucciones);
+                    
+                }, 2000);
+            }
+        }
+
+        // Validación en tiempo real para campos requeridos
+        document.getElementById('nombre').addEventListener('input', function(e) {
+            if (this.value.length < 5) {
+                this.style.borderColor = '#dc3545';
+            } else {
+                this.style.borderColor = '#28a745';
+            }
+        });
+
+        document.getElementById('email').addEventListener('input', function(e) {
+            if (!this.value.includes('@') || !this.value.includes('.')) {
+                this.style.borderColor = '#dc3545';
+            } else {
+                this.style.borderColor = '#28a745';
+            }
+        });
+
+        document.getElementById('telefono').addEventListener('input', function(e) {
+            const numeros = this.value.replace(/\D/g, '');
+            if (numeros.length < 10) {
+                this.style.borderColor = '#dc3545';
+            } else {
+                this.style.borderColor = '#28a745';
+                this.value = numeros; // Solo números
+            }
+        });
+
+        // Prevenir envío del formulario
+        document.getElementById('bajaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
