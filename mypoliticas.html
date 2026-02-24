@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vialcheck - Políticas de Privacidad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header h1 span {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.5em;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        .header .version {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .last-updated {
+            background: #f8f9fa;
+            padding: 15px 40px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.95em;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .last-updated i {
+            font-style: normal;
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.85em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 25px;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section h2 {
+            color: #495057;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 i {
+            font-style: normal;
+            background: #e9ecef;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .section h3 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            color: #6c757d;
+        }
+
+        .section ul, .section ol {
+            margin: 15px 0 15px 30px;
+            color: #6c757d;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .section strong {
+            color: #495057;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        .data-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+            background: #f8f9fa;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .highlight-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            border: 2px dashed #667eea;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0 0 0;
+        }
+
+        .contact-box h3 {
+            color: #495057;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .contact-label {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .contact-value {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.85em;
+            color: #495057;
+            margin: 0 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .contact-info {
+                gap: 20px;
+            }
+            
+            .data-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Vialcheck <span>v2.0</span></h1>
+            <p class="version">Políticas de Privacidad y Protección de Datos</p>
+        </div>
+
+        <div class="last-updated">
+            <i>ACTUALIZADO</i>
+            <span>📅 Última actualización: 24 de febrero de 2026</span>
+        </div>
+
+        <div class="content">
+            <div class="highlight-box">
+                <strong>📌 Compromiso con tu privacidad:</strong> En Vialcheck, la seguridad y privacidad de tus datos es nuestra prioridad. Esta política describe cómo recopilamos, usamos y protegemos la información de conductores, vehículos y clientes.
+            </div>
+
+            <div class="section">
+                <h2><i>1</i> Información que Recopilamos</h2>
+                
+                <h3>📍 Datos de Geolocalización</h3>
+                <p>Vialcheck recopila datos de ubicación en tiempo real para:</p>
+                <ul>
+                    <li><strong>Seguimiento de rutas:</strong> Monitoreo continuo de la posición del vehículo durante los viajes</li>
+                    <li><strong>Verificación de puntos de chequeo:</strong> Confirmación de llegada a paradas establecidas</li>
+                    <li><strong>Control de velocidad:</strong> Detección de excesos de velocidad para seguridad vial</li>
+                    <li><strong>Historial de viajes:</strong> Registro de rutas realizadas para análisis y reportes</li>
+                </ul>
+
+                <h3>👤 Datos de Conductores</h3>
+                <ul>
+                    <li><strong>Identificación:</strong> Nombre completo, ID de usuario, fotografía</li>
+                    <li><strong>Credenciales:</strong> Información de acceso a la plataforma</li>
+                    <li><strong>Rendimiento:</strong> Estadísticas de viajes, puntualidad, excesos de velocidad</li>
+                    <li><strong>Contacto:</strong> Número telefónico, correo electrónico corporativo</li>
+                </ul>
+
+                <h3>🚛 Datos de Vehículos</h3>
+                <ul>
+                    <li>Placas y número de identificación vehicular</li>
+                    <li>Kilometraje y consumo de combustible</li>
+                    <li>Estado de mantenimiento y alertas mecánicas</li>
+                    <li>Historial de rutas asignadas</li>
+                </ul>
+
+                <h3>📋 Datos de Clientes y Rutas</h3>
+                <ul>
+                    <li><strong>Información de contacto:</strong> Nombre de empresa, teléfono, dirección</li>
+                    <li><strong>Puntos de entrega:</strong> Coordenadas de ubicaciones frecuentes</li>
+                    <li><strong>Historial de servicios:</strong> Registro de entregas y visitas realizadas</li>
+                    <li><strong>Reportes:</strong> Incidencias, retrasos, novedades en ruta</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><i>2</i> Uso de la Información</h2>
+                
+                <p>Los datos recopilados se utilizan para:</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Propósito</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Gestión de viajes</strong></td>
+                            <td>Control de rutas en tiempo real, verificación de puntos de control</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seguridad vial</strong></td>
+                            <td>Monitoreo de velocidad, alertas de excesos, zonas de riesgo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Optimización logística</strong></td>
+                            <td>Análisis de tiempos de viaje, eficiencia de rutas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reportes a clientes</strong></td>
+                            <td>Notificaciones de llegada, tiempos estimados, incidencias</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mejora continua</strong></td>
+                            <td>Análisis de datos para optimizar la plataforma</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <span class="badge">📊 Análisis</span>
+                    <span class="badge">🚨 Alertas</span>
+                    <span class="badge">📱 Notificaciones</span>
+                    <span class="badge">🗺️ Mapas</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><i>3</i> Permisos de la Aplicación</h2>
+                
+                <p>Para su correcto funcionamiento, Vialcheck solicita los siguientes permisos:</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Permiso</th>
+                            <th>Uso en la App</th>
+                            <th>¿Opcional?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>📍 Ubicación (GPS)</strong></td>
+                            <td>Seguimiento de rutas, verificación de puntos de chequeo, control de velocidad</td>
+                            <td style="color: #dc3545;">Obligatorio</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📷 Cámara</strong></td>
+                            <td>Toma de evidencia fotográfica en puntos de control, captura de incidencias</td>
+                            <td style="color: #28a745;">Opcional</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🎤 Micrófono</strong></td>
+                            <td>Grabación de notas de voz para reportes, comunicación con base</td>
+                            <td style="color: #28a745;">Opcional</td>
+                        </tr>
+                        <tr>
+                            <td><strong>💾 Almacenamiento</strong></td>
+                            <td>Guardar fotos de evidencia, caché de mapas offline</td>
+                            <td style="color: #28a745;">Opcional</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🔔 Notificaciones</strong></td>
+                            <td>Alertas de proximidad a puntos, excesos de velocidad, mensajes de base</td>
+                            <td style="color: #28a745;">Opcional</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 20px; background: #fff3cd; padding: 15px; border-radius: 10px; border-left: 4px solid #ffc107;">
+                    <strong>⚠️ Importante:</strong> El permiso de ubicación en segundo plano es necesario para continuar el seguimiento cuando la aplicación está minimizada. Puedes desactivarlo, pero afectará la funcionalidad de monitoreo continuo.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><i>4</i> Almacenamiento y Seguridad</h2>
+                
+                <h3>📍 Datos en Tiempo Real</h3>
+                <ul>
+                    <li>Las coordenadas GPS se transmiten encriptadas a nuestros servidores cada 5-30 segundos</li>
+                    <li>Los datos de ubicación en segundo plano se almacenan localmente y se sincronizan al restablecer conexión</li>
+                </ul>
+
+                <h3>🗄️ Base de Datos</h3>
+                <ul>
+                    <li><strong>Almacenamiento:</strong> Supabase (PostgreSQL) con encriptación en reposo</li>
+                    <li><strong>Respaldos:</strong> Copias de seguridad diarias con retención de 30 días</li>
+                    <li><strong>Ubicación:</strong> Servidores en AWS (us-east-1) con cumplimiento GDPR</li>
+                </ul>
+
+                <h3>🔐 Medidas de Seguridad</h3>
+                <ul>
+                    <li>Autenticación segura con Supabase Auth</li>
+                    <li>Tokens JWT con expiración</li>
+                    <li>Conexiones HTTPS/TLS</li>
+                    <li>Auditoría de acceso a datos</li>
+                    <li>Anonimización de datos para análisis</li>
+                </ul>
+
+                <h3>⏱️ Retención de Datos</h3>
+                <ul>
+                    <li><strong>Ubicación en tiempo real:</strong> 30 días</li>
+                    <li><strong>Historial de viajes:</strong> 1 año</li>
+                    <li><strong>Reportes de clientes:</strong> 2 años</li>
+                    <li><strong>Datos de conductores:</strong> Mientras dure la relación laboral + 1 año</li>
+                    <li><strong>Datos de vehículos:</strong> Historial completo del vehículo</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><i>5</i> Compartir Información</h2>
+                
+                <p>Vialcheck comparte información limitada en los siguientes casos:</p>
+                
+                <h3>👥 Con Clientes</h3>
+                <ul>
+                    <li><strong>Reportes de entrega:</strong> Hora de llegada, evidencia fotográfica</li>
+                    <li><strong>Incidencias:</strong> Retrasos, problemas en ruta</li>
+                    <li><strong>Seguimiento:</strong> Ubicación aproximada (solo si el cliente contrata el servicio de tracking)</li>
+                </ul>
+
+                <h3>🏢 Con la Empresa Administradora</h3>
+                <ul>
+                    <li>Dashboard completo con todos los datos de flota</li>
+                    <li>Reportes de rendimiento de conductores</li>
+                    <li>Alertas y notificaciones</li>
+                </ul>
+
+                <h3>⚖️ Por Requerimiento Legal</h3>
+                <ul>
+                    <li>Autoridades judiciales con orden válida</li>
+                    <li>Entidades de tránsito para verificación de rutas</li>
+                    <li>Aseguradoras en caso de siniestros</li>
+                </ul>
+
+                <p><strong>📢 Importante:</strong> Vialcheck <u>NO vende</u> datos personales a terceros ni utiliza la información para publicidad.</p>
+            </div>
+
+            <div class="section">
+                <h2><i>6</i> Derechos del Usuario</h2>
+                
+                <p>Como usuario de Vialcheck, tienes derecho a:</p>
+                
+                <ul>
+                    <li><strong>Acceder</strong> a todos tus datos personales almacenados</li>
+                    <li><strong>Rectificar</strong> información incorrecta o desactualizada</li>
+                    <li><strong>Cancelar</strong> tu cuenta y solicitar la eliminación de datos</li>
+                    <li><strong>Oponerte</strong> al procesamiento de ciertos datos</li>
+                    <li><strong>Exportar</strong> tus datos en formato JSON o CSV</li>
+                    <li><strong>Limitar</strong> el uso de ubicación en segundo plano</li>
+                </ul>
+
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <strong>📧 Para ejercer tus derechos:</strong> Envía un correo a privacidad@vialcheck.com con tu solicitud. Te responderemos en máximo 15 días hábiles.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><i>7</i> Seguridad para Conductores</h2>
+                
+                <p>Vialcheck incluye funcionalidades específicas para proteger a los conductores:</p>
+                
+                <ul>
+                    <li><strong>Botón de pánico:</strong> Alerta silenciosa a base en caso de emergencia</li>
+                    <li><strong>Zonas de riesgo:</strong> Notificaciones al entrar en áreas peligrosas</li>
+                    <li><strong>Descansos obligatorios:</strong> Alertas de tiempo de conducción continuo</li>
+                    <li><strong>Excesos de velocidad:</strong> Alertas auditivas y visuales inmediatas</li>
+                    <li><strong>Modo rodar:</strong> Contingencia cuando hay problemas de conectividad</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><i>8</i> Menores de Edad</h2>
+                
+                <p>Vialcheck está diseñado exclusivamente para uso profesional y corporativo. No está dirigido a menores de 18 años y no recopilamos intencionalmente información de menores. Si descubrimos que un menor nos ha proporcionado datos personales, los eliminaremos inmediatamente.</p>
+            </div>
+
+            <div class="section">
+                <h2><i>9</i> Cambios en la Política</h2>
+                
+                <p>Nos reservamos el derecho de actualizar esta política de privacidad. Los cambios significativos serán notificados a través de:</p>
+                
+                <ul>
+                    <li>Notificación en la aplicación al iniciar sesión</li>
+                    <li>Correo electrónico a los administradores</li>
+                    <li>Publicación en nuestro sitio web</li>
+                </ul>
+                
+                <p>La fecha de la última actualización siempre estará visible al inicio de este documento. Te recomendamos revisar periódicamente esta política para estar informado de cómo protegemos tu información.</p>
+            </div>
+
+            <div class="contact-box">
+                <h3>📬 Contacto para Asuntos de Privacidad</h3>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">privacidad@vialcheck.com</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <span class="contact-label">Teléfono</span>
+                        <span class="contact-value">+52 (55) 1234-5678</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <span class="contact-label">Web</span>
+                        <span class="contact-value">www.vialcheck.com/privacidad</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🏢</div>
+                        <span class="contact-label">Oficina</span>
+                        <span class="contact-value">CDMX, México</span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; font-size: 0.9em; color: #6c757d;">
+                    <p>📋 Para solicitudes formales, por favor incluye en el asunto: "PROTECCIÓN DE DATOS - [tu nombre/empresa]"</p>
+                    <p>⏱️ Tiempo de respuesta: Máximo 15 días hábiles</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px; text-align: center;">
+                <p style="margin-bottom: 15px;">📱 <strong>Versiones compatibles:</strong> iOS 14+ | Android 10+ | Web</p>
+                <p style="color: #6c757d;">Al utilizar Vialcheck, aceptas esta política de privacidad. Si no estás de acuerdo, por favor no uses la aplicación.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Vialcheck - Todos los derechos reservados</p>
+            <p style="margin-top: 10px;">
+                <a href="#">Términos de Servicio</a> • 
+                <a href="#">Política de Cookies</a> • 
+                <a href="#">Aviso Legal</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
